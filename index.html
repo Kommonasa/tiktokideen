@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Ideen - Dark Edition</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Ideen Darkmode</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1 class="glow">🚀 Deine TikTok Ideen</h1>
+<canvas id="particles"></canvas>
 
-        <div class="idea-box">
-            <h2 id="ideaText">Lade neue Ideen...</h2>
-        </div>
+<div class="container">
+  <h1 class="glow">🚀 Deine TikTok Ideen</h1>
 
-        <div class="product">
-            <h3>🎤 Top Mikrofon für Creator!</h3>
-            <a href="https://amzn.to/3EQlpZQ" target="_blank">
-                <img src="https://m.media-amazon.com/images/I/61egnO8q6ZL._AC_SX679_.jpg" alt="Mikrofon">
-            </a>
-            <button onclick="window.open('https://amzn.to/3EQlpZQ')">Jetzt sichern</button>
-        </div>
+  <div class="idea-box">
+    <h2 id="ideaText">Lade neue Ideen...</h2>
+  </div>
 
-        <audio id="bgMusic" autoplay loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+</div>
+
+<!-- Affiliate Werbung Ecke -->
+<a href="https://amzn.to/3EQlpZQ" target="_blank" class="product-corner">
+  <img src="https://m.media-amazon.com/images/I/61egnO8q6ZL._AC_SX679_.jpg" alt="Mikrofon Werbung">
+</a>
 
 <script>
 const ideas = [
@@ -34,12 +34,42 @@ const ideas = [
     "🎭 Lustige Sketche machen",
     "🎶 Song-LipSync",
     "💥 Epische Übergänge",
-    "📚 Storytime",
-    "🌟 Glow-Up Transformation",
-    "🐶 Tiere im Mittelpunkt",
-    "🍔 Food-Review",
-    "🎮 Gaming Clip",
-    "🎤 Karaoke Battle"
+    "📚 Storytime erzählen",
+    "🌟 Glow-Up Transformation zeigen",
+    "🐶 Lustige Tiere filmen",
+    "🍔 Food-Review drehen",
+    "🎮 Gaming Clip aufnehmen",
+    "🎤 Karaoke Battle",
+    "🏋️‍♂️ Fitness Motivation posten",
+    "🧠 Lifehacks zeigen",
+    "🎨 Schnelles Zeichnen",
+    "🎬 Mini-Filme erstellen",
+    "😎 Outfit Check",
+    "🚗 Car-Content",
+    "🍃 Natur und Landschaft filmen",
+    "📈 Business Tipps",
+    "🛍️ Shopping Hauls",
+    "🏝️ Reisevlog starten",
+    "🎲 Lustige Challenges",
+    "🕺 Tanz mit Eltern oder Großeltern",
+    "🧩 DIY-Projekte",
+    "🔮 Zukunftsvorhersagen",
+    "🐣 Alltag mit Haustieren",
+    "🎁 Geschenkideen vorstellen",
+    "🎭 Verkleidung und Cosplay",
+    "🎯 Reaktionsvideos",
+    "🖌️ Kreative DIY Kunst",
+    "📷 Instagram Behind the Scenes",
+    "🎧 Sound-Effekt Experimente",
+    "🎸 Mini-Musik Auftritt",
+    "🏆 Sportliche Tricks",
+    "🧘‍♂️ Yoga-Posen Challenge",
+    "👗 Mode-Tipps für alle Jahreszeiten",
+    "🛠️ Gadget-Reviews",
+    "🛏️ Morgenroutine zeigen",
+    "💡 Motivationszitate kreativ verpacken",
+    "🧙‍♂️ Magie und Zaubertricks",
+    "🎂 Geburtstags-Überraschungen filmen"
 ];
 
 let currentIndex = 0;
@@ -50,6 +80,64 @@ function updateIdea() {
 }
 
 setInterval(updateIdea, 5000);
+
+// Partikel-Animation
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = Math.random() * 3 - 1.5;
+    this.speedY = Math.random() * 3 - 1.5;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.size > 0.2) this.size -= 0.1;
+  }
+  draw() {
+    ctx.fillStyle = '#0ff';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function init() {
+  particlesArray = [];
+  for (let i = 0; i < 100; i++) {
+    particlesArray.push(new Particle());
+  }
+}
+
+function handleParticles() {
+  for (let i = 0; i < particlesArray.length; i++) {
+    particlesArray[i].update();
+    particlesArray[i].draw();
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  handleParticles();
+  requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+window.addEventListener('resize', function () {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init();
+});
 </script>
 
 </body>
