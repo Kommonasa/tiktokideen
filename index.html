@@ -3,61 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Ideen Generator</title>
-    <link rel="stylesheet" href="style.css"> <!-- Verlinkung zu der externen CSS-Datei -->
+    <title>TikTok Ideen - Dark Edition</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>TikTok Ideen Generator</h1>
-    <p>Hol dir coole Ideen und starte dein TikTok-Abenteuer!</p>
+    <div class="container">
+        <h1 class="glow">🚀 Deine TikTok Ideen</h1>
 
-    <!-- Affiliate Produkt Sektion -->
-    <section>
-        <h2>Empfohlenes Produkt für TikTok-Creator</h2>
-        <a href="https://amzn.to/3EQlpZQ" target="_blank">
-            <img src="https://m.media-amazon.com/images/I/61egnO8q6ZL._AC_SX679_.jpg" alt="Mikrofon">
-        </a>
-        <p>Dieses Mikrofon sorgt für den perfekten Sound in deinen TikTok-Videos!</p>
-        <button onclick="window.location.href='https://amzn.to/3EQlpZQ'">Jetzt kaufen</button>
-    </section>
+        <div class="idea-box">
+            <h2 id="ideaText">Lade neue Ideen...</h2>
+        </div>
 
-    <!-- Idee Wechsel Effekt -->
-    <div class="idea-container">
-        <h3 id="ideaText">Tanz-Challenge</h3>
+        <div class="product">
+            <h3>🎤 Top Mikrofon für Creator!</h3>
+            <a href="https://amzn.to/3EQlpZQ" target="_blank">
+                <img src="https://m.media-amazon.com/images/I/61egnO8q6ZL._AC_SX679_.jpg" alt="Mikrofon">
+            </a>
+            <button onclick="window.open('https://amzn.to/3EQlpZQ')">Jetzt sichern</button>
+        </div>
+
+        <audio id="bgMusic" autoplay loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
-    <!-- Musik Player -->
-    <audio controls autoplay loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-        Dein Browser unterstützt das Audio-Element nicht.
-    </audio>
+<script>
+const ideas = [
+    "🔥 Tanz-Challenge starten",
+    "🎭 Lustige Sketche machen",
+    "🎶 Song-LipSync",
+    "💥 Epische Übergänge",
+    "📚 Storytime",
+    "🌟 Glow-Up Transformation",
+    "🐶 Tiere im Mittelpunkt",
+    "🍔 Food-Review",
+    "🎮 Gaming Clip",
+    "🎤 Karaoke Battle"
+];
 
-    <!-- JavaScript für Idee Wechsel -->
-    <script>
-        const ideas = [
-            "Tanz-Challenge",
-            "Lip Sync Video",
-            "Viral Meme",
-            "Tiktok-Reaction Video",
-            "Behind-the-Scenes",
-            "Lifestyle Video",
-            "Comedy Sketch",
-            "Tutorial/How-to",
-            "Song Dance Challenge",
-            "Beauty Routine"
-        ];
+let currentIndex = 0;
 
-        let currentIndex = 0;
+function updateIdea() {
+    currentIndex = (currentIndex + 1) % ideas.length;
+    document.getElementById('ideaText').innerText = ideas[currentIndex];
+}
 
-        function changeIdea() {
-            currentIndex++;
-            if (currentIndex >= ideas.length) {
-                currentIndex = 0;
-            }
-            document.getElementById('ideaText').textContent = ideas[currentIndex];
-        }
+setInterval(updateIdea, 5000);
+</script>
 
-        setInterval(changeIdea, 5000); // Alle 5 Sekunden neue Idee
-    </script>
 </body>
 </html>
