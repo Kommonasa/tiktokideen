@@ -3,12 +3,11 @@ body {
   padding: 0;
   font-family: 'Poppins', sans-serif;
   background: #000;
-  color: #fff;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+  overflow: hidden;
+  color: white;
 }
 
-#particles {
+#stars, #meteors, #lasers {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,67 +16,60 @@ body {
 
 .container {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   text-align: center;
-  padding: 100px 20px;
+  padding: 80px 20px;
 }
 
 h1.glow {
   font-size: 3.5rem;
-  text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 60px #00ffff;
-  animation: neon-glow 2s infinite alternate;
+  color: #00ffff;
+  text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px #00ffff;
+  animation: pulseGlow 2s infinite alternate;
 }
 
-@keyframes neon-glow {
-  0% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
-  100% { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff; }
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 10px #00ffff; }
+  100% { text-shadow: 0 0 40px #00ffff, 0 0 80px #00ffff; }
 }
 
 .idea-box {
-  background: rgba(25, 25, 25, 0.85);
+  background: rgba(25, 25, 25, 0.8);
   padding: 40px;
   border-radius: 20px;
-  margin: 40px auto;
+  margin: 50px auto;
   width: 90%;
   max-width: 700px;
-  box-shadow: 0 0 30px #0ff;
-  animation: floatUp 2s ease-in-out infinite alternate;
+  box-shadow: 0 0 30px #00ffff;
+  animation: float 3s ease-in-out infinite alternate;
 }
 
-@keyframes floatUp {
-  from { transform: translateY(0); }
-  to { transform: translateY(-10px); }
+@keyframes float {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-20px); }
 }
 
-.idea-box h2 {
+#ideaText {
   font-size: 2.5rem;
-  transition: all 0.5s;
-  animation: ideaFade 1s ease-in-out;
+  animation: fadeText 1s ease-in-out;
 }
 
-@keyframes ideaFade {
+@keyframes fadeText {
   from { opacity: 0; transform: scale(0.8); }
   to { opacity: 1; transform: scale(1); }
-}
-
-.fade {
-  opacity: 0;
-  transform: scale(0.7);
 }
 
 .product-corner {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 90px;
-  height: 90px;
+  width: 80px;
   z-index: 999;
-  transition: transform 0.4s, box-shadow 0.4s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-corner img {
   width: 100%;
-  height: auto;
   border-radius: 50%;
   box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff;
 }
