@@ -6,16 +6,20 @@
   <title>🔥 TikTok Ideen Generator</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/scrollreveal"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script> 
 </head>
 <body>
+  <div id="tsparticles"></div>
+
   <div class="container">
     <h1 class="title">🔥 Dein TikTok Ideen Generator 🔥</h1>
-    <p class="subtitle">Drück auf den Button und hol dir eine neue Idee!</p>
+    <p class="subtitle">Drück auf den Button oder warte für neue Ideen!</p>
     <button class="generate-button" onclick="generateIdea()">🚀 Neue Idee holen</button>
     <div class="idea-box" id="ideaBox" onclick="ideaClicked()">Klick auf den Button, um eine Idee zu sehen!</div>
   </div>
 
   <script>
+    // Liste der TikTok Ideen
     const ideas = [
       "💃 Starte eine neue Tanz-Challenge!",
       "🎭 Mach einen lustigen Sketch nach!",
@@ -29,12 +33,14 @@
       "⚡ Zeige eine verrückte Transformation!"
     ];
 
+    // Funktion: Neue Idee holen
     function generateIdea() {
       const ideaBox = document.getElementById('ideaBox');
       const randomIndex = Math.floor(Math.random() * ideas.length);
       ideaBox.textContent = ideas[randomIndex];
     }
 
+    // Funktion: Klick-Animation
     function ideaClicked() {
       const ideaBox = document.getElementById('ideaBox');
       ideaBox.classList.add('clicked');
@@ -43,39 +49,7 @@
       }, 300);
     }
 
-    ScrollReveal().reveal('.title', { delay: 300, origin: 'top', distance: '50px' });
-    ScrollReveal().reveal('.subtitle', { delay: 600, origin: 'bottom', distance: '50px' });
-    ScrollReveal().reveal('.generate-button', { delay: 900, origin: 'bottom', distance: '50px' });
-    ScrollReveal().reveal('.idea-box', { delay: 1200, origin: 'bottom', distance: '50px' });
-<script>
-    const ideas = [
-      "💃 Starte eine neue Tanz-Challenge!",
-      "🎭 Mach einen lustigen Sketch nach!",
-      "🎤 Zeig dein bestes Lip-Sync!",
-      "📸 Erstelle ein Mini-Vlog deines Tages!",
-      "😎 Reagiere auf virale TikToks!",
-      "👀 Teile geheime Lifehacks!",
-      "🛒 Teste TikTok Produkte!",
-      "🤔 Erzähle eine verrückte Storytime!",
-      "🐶 Mach ein Video mit deinem Haustier!",
-      "⚡ Zeige eine verrückte Transformation!"
-    ];
-
-    function generateIdea() {
-      const ideaBox = document.getElementById('ideaBox');
-      const randomIndex = Math.floor(Math.random() * ideas.length);
-      ideaBox.textContent = ideas[randomIndex];
-    }
-
-    function ideaClicked() {
-      const ideaBox = document.getElementById('ideaBox');
-      ideaBox.classList.add('clicked');
-      setTimeout(() => {
-        ideaBox.classList.remove('clicked');
-      }, 300);
-    }
-
-    // Scroll Animationen
+    // Scroll Reveal Animationen
     ScrollReveal().reveal('.title', { delay: 300, origin: 'top', distance: '50px' });
     ScrollReveal().reveal('.subtitle', { delay: 600, origin: 'bottom', distance: '50px' });
     ScrollReveal().reveal('.generate-button', { delay: 900, origin: 'bottom', distance: '50px' });
@@ -83,6 +57,43 @@
 
     // Automatisch alle 5 Sekunden neue Idee
     setInterval(generateIdea, 5000);
-</script>
 
-
+    // Partikel Hintergrund
+    tsParticles.load("tsparticles", {
+      background: { color: { value: "#000" } },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          resize: true
+        },
+        modes: { repulse: { distance: 100, duration: 0.4 } }
+      },
+      particles: {
+        color: { value: "#ff0077" },
+        links: {
+          color: "#ff0077",
+          distance: 150,
+          enable: true,
+          opacity: 0.5,
+          width: 1
+        },
+        collisions: { enable: true },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: { default: "bounce" },
+          random: false,
+          speed: 2,
+          straight: false
+        },
+        number: { density: { enable: true, area: 800 }, value: 80 },
+        opacity: { value: 0.5 },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 5 } }
+      },
+      detectRetina: true
+    });
+  </script>
+</body>
+</html>
