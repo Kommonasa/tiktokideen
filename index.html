@@ -1,106 +1,63 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🔥 TikTok Ideen Generator</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Ideen Generator</title>
+    <link rel="stylesheet" href="style.css"> <!-- Verlinkung zu der externen CSS-Datei -->
 </head>
 <body>
-  <!-- Partikel-Hintergrund -->
-  <div id="tsparticles"></div>
 
-  <!-- Musikplayer -->
-  <audio id="backgroundMusic" autoplay loop>
-    <source src="https://files.catbox.moe/3qk2g1.mp3" type="audio/mpeg">
-    Dein Browser unterstützt kein Audio.
-  </audio>
+    <h1>TikTok Ideen Generator</h1>
+    <p>Hol dir coole Ideen und starte dein TikTok-Abenteuer!</p>
 
-  <div class="container">
-    <h1 class="title">🔥 Dein TikTok Ideen Generator 🔥</h1>
-    <p class="subtitle">Drück auf den Button oder warte für neue Ideen!</p>
-    <button class="generate-button" onclick="generateIdea()">🚀 Neue Idee holen</button>
-    <div class="idea-box" id="ideaBox" onclick="ideaClicked()">Klick auf den Button, um eine Idee zu sehen!</div>
-  </div>
+    <!-- Affiliate Produkt Sektion -->
+    <section>
+        <h2>Empfohlenes Produkt für TikTok-Creator</h2>
+        <a href="https://amzn.to/3EQlpZQ" target="_blank">
+            <img src="https://m.media-amazon.com/images/I/61egnO8q6ZL._AC_SX679_.jpg" alt="Mikrofon">
+        </a>
+        <p>Dieses Mikrofon sorgt für den perfekten Sound in deinen TikTok-Videos!</p>
+        <button onclick="window.location.href='https://amzn.to/3EQlpZQ'">Jetzt kaufen</button>
+    </section>
 
-  <script>
-    // Liste der TikTok Ideen
-    const ideas = [
-      "💃 Starte eine neue Tanz-Challenge!",
-      "🎭 Mach einen lustigen Sketch nach!",
-      "🎤 Zeig dein bestes Lip-Sync!",
-      "📸 Erstelle ein Mini-Vlog deines Tages!",
-      "😎 Reagiere auf virale TikToks!",
-      "👀 Teile geheime Lifehacks!",
-      "🛒 Teste TikTok Produkte!",
-      "🤔 Erzähle eine verrückte Storytime!",
-      "🐶 Mach ein Video mit deinem Haustier!",
-      "⚡ Zeige eine verrückte Transformation!"
-    ];
+    <!-- Idee Wechsel Effekt -->
+    <div class="idea-container">
+        <h3 id="ideaText">Tanz-Challenge</h3>
+    </div>
 
-    // Funktion: Neue Idee holen
-    function generateIdea() {
-      const ideaBox = document.getElementById('ideaBox');
-      const randomIndex = Math.floor(Math.random() * ideas.length);
-      ideaBox.textContent = ideas[randomIndex];
-    }
+    <!-- Musik Player -->
+    <audio controls autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+        Dein Browser unterstützt das Audio-Element nicht.
+    </audio>
 
-    // Funktion: Klick-Animation
-    function ideaClicked() {
-      const ideaBox = document.getElementById('ideaBox');
-      ideaBox.classList.add('clicked');
-      setTimeout(() => {
-        ideaBox.classList.remove('clicked');
-      }, 300);
-    }
+    <!-- JavaScript für Idee Wechsel -->
+    <script>
+        const ideas = [
+            "Tanz-Challenge",
+            "Lip Sync Video",
+            "Viral Meme",
+            "Tiktok-Reaction Video",
+            "Behind-the-Scenes",
+            "Lifestyle Video",
+            "Comedy Sketch",
+            "Tutorial/How-to",
+            "Song Dance Challenge",
+            "Beauty Routine"
+        ];
 
-    // Scroll Reveal Animationen
-    ScrollReveal().reveal('.title', { delay: 300, origin: 'top', distance: '50px' });
-    ScrollReveal().reveal('.subtitle', { delay: 600, origin: 'bottom', distance: '50px' });
-    ScrollReveal().reveal('.generate-button', { delay: 900, origin: 'bottom', distance: '50px' });
-    ScrollReveal().reveal('.idea-box', { delay: 1200, origin: 'bottom', distance: '50px' });
+        let currentIndex = 0;
 
-    // Automatisch alle 5 Sekunden neue Idee
-    setInterval(generateIdea, 5000);
+        function changeIdea() {
+            currentIndex++;
+            if (currentIndex >= ideas.length) {
+                currentIndex = 0;
+            }
+            document.getElementById('ideaText').textContent = ideas[currentIndex];
+        }
 
-    // Partikel Hintergrund
-    tsParticles.load("tsparticles", {
-      background: { color: { value: "#000" } },
-      fpsLimit: 60,
-      interactivity: {
-        events: {
-          onHover: { enable: true, mode: "repulse" },
-          resize: true
-        },
-        modes: { repulse: { distance: 100, duration: 0.4 } }
-      },
-      particles: {
-        color: { value: "#ff0077" },
-        links: {
-          color: "#ff0077",
-          distance: 150,
-          enable: true,
-          opacity: 0.5,
-          width: 1
-        },
-        collisions: { enable: true },
-        move: {
-          direction: "none",
-          enable: true,
-          outModes: { default: "bounce" },
-          random: false,
-          speed: 2,
-          straight: false
-        },
-        number: { density: { enable: true, area: 800 }, value: 80 },
-        opacity: { value: 0.5 },
-        shape: { type: "circle" },
-        size: { value: { min: 1, max: 5 } }
-      },
-      detectRetina: true
-    });
-  </script>
+        setInterval(changeIdea, 5000); // Alle 5 Sekunden neue Idee
+    </script>
 </body>
 </html>
