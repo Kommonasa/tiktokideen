@@ -24,26 +24,46 @@ body {
 
 .subtitle {
   font-size: 1.5em;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #ccc;
 }
 
-.ideas {
-  display: grid;
-  gap: 20px;
+.generate-button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  background-color: #ff0077;
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 20px;
 }
 
-.idea {
-  font-size: 1.2em;
-  padding: 10px;
-  border: 1px solid #ff0077;
+.generate-button:hover {
+  background-color: #ff3399;
+  transform: scale(1.1);
+}
+
+.idea-box {
+  font-size: 1.5em;
+  border: 2px dashed #ff0077;
+  padding: 20px;
   border-radius: 10px;
+  margin-top: 20px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 0.3s;
 }
 
-.idea:hover {
-  background-color: #ff0077;
-  color: #000;
-  transform: scale(1.05);
-  cursor: pointer;
+.clicked {
+  animation: clickEffect 0.3s ease;
+}
+
+@keyframes clickEffect {
+  0% { transform: scale(1); background-color: #ff0077; color: #000; }
+  50% { transform: scale(1.1); background-color: #fff; color: #ff0077; }
+  100% { transform: scale(1); background-color: transparent; color: #fff; }
 }
