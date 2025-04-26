@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok Ideen Darkmode</title>
+  <title>TikTok Ideen Universe</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,134 +11,28 @@
 <canvas id="particles"></canvas>
 
 <div class="container">
-  <h1 class="glow">🚀 Deine TikTok Ideen</h1>
+  <h1 class="glow">🚀 TikTok Ideen Universe</h1>
 
   <div class="idea-box">
     <h2 id="ideaText">Lade neue Ideen...</h2>
   </div>
 
   <audio id="bgMusic" autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
   </audio>
-
 </div>
 
-<!-- Affiliate Werbung Ecke -->
+<!-- Mikrofon Werbung -->
 <a href="https://amzn.to/3EQlpZQ" target="_blank" class="product-corner">
   <img src="https://m.media-amazon.com/images/I/61egnO8q6ZL._AC_SX679_.jpg" alt="Mikrofon Werbung">
 </a>
 
-<script>
-const ideas = [
-    "🔥 Tanz-Challenge starten",
-    "🎭 Lustige Sketche machen",
-    "🎶 Song-LipSync",
-    "💥 Epische Übergänge",
-    "📚 Storytime erzählen",
-    "🌟 Glow-Up Transformation zeigen",
-    "🐶 Lustige Tiere filmen",
-    "🍔 Food-Review drehen",
-    "🎮 Gaming Clip aufnehmen",
-    "🎤 Karaoke Battle",
-    "🏋️‍♂️ Fitness Motivation posten",
-    "🧠 Lifehacks zeigen",
-    "🎨 Schnelles Zeichnen",
-    "🎬 Mini-Filme erstellen",
-    "😎 Outfit Check",
-    "🚗 Car-Content",
-    "🍃 Natur und Landschaft filmen",
-    "📈 Business Tipps",
-    "🛍️ Shopping Hauls",
-    "🏝️ Reisevlog starten",
-    "🎲 Lustige Challenges",
-    "🕺 Tanz mit Eltern oder Großeltern",
-    "🧩 DIY-Projekte",
-    "🔮 Zukunftsvorhersagen",
-    "🐣 Alltag mit Haustieren",
-    "🎁 Geschenkideen vorstellen",
-    "🎭 Verkleidung und Cosplay",
-    "🎯 Reaktionsvideos",
-    "🖌️ Kreative DIY Kunst",
-    "📷 Instagram Behind the Scenes",
-    "🎧 Sound-Effekt Experimente",
-    "🎸 Mini-Musik Auftritt",
-    "🏆 Sportliche Tricks",
-    "🧘‍♂️ Yoga-Posen Challenge",
-    "👗 Mode-Tipps für alle Jahreszeiten",
-    "🛠️ Gadget-Reviews",
-    "🛏️ Morgenroutine zeigen",
-    "💡 Motivationszitate kreativ verpacken",
-    "🧙‍♂️ Magie und Zaubertricks",
-    "🎂 Geburtstags-Überraschungen filmen"
-];
+<!-- Footer mit Haftungsausschluss -->
+<footer class="footer">
+  © 2025 TikTokIdeen. Nutzung auf eigene Gefahr.
+</footer>
 
-let currentIndex = 0;
-
-function updateIdea() {
-    currentIndex = (currentIndex + 1) % ideas.length;
-    document.getElementById('ideaText').innerText = ideas[currentIndex];
-}
-
-setInterval(updateIdea, 5000);
-
-// Partikel-Animation
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particlesArray = [];
-
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 3 + 1;
-    this.speedX = Math.random() * 3 - 1.5;
-    this.speedY = Math.random() * 3 - 1.5;
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if (this.size > 0.2) this.size -= 0.1;
-  }
-  draw() {
-    ctx.fillStyle = '#0ff';
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
-
-function init() {
-  particlesArray = [];
-  for (let i = 0; i < 100; i++) {
-    particlesArray.push(new Particle());
-  }
-}
-
-function handleParticles() {
-  for (let i = 0; i < particlesArray.length; i++) {
-    particlesArray[i].update();
-    particlesArray[i].draw();
-  }
-}
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  handleParticles();
-  requestAnimationFrame(animate);
-}
-
-init();
-animate();
-
-window.addEventListener('resize', function () {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
-});
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
