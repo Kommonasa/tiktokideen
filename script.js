@@ -1,20 +1,24 @@
 const ideas = [
-  "🔥 Neue Tanz-Challenge starten",
-  "🎭 Lustige Sketche filmen",
-  "💥 Glow-Up: vorher hässlich ➔ nachher hübsch",
-  "🎶 Lip-Sync Battle",
-  "🐶 Haustier-Tricks",
-  "🍔 Essens-Challenge",
-  "🎮 Gaming Highlight Clips",
-  "🎤 Karaoke Show",
-  "📚 Storytime Drama",
-  "🏋️‍♂️ Fitness Transformation",
-  "💄 Makeover Blitz",
-  "🧠 Lifehacks verraten",
-  "🎨 Kunst Speedrun",
-  "🚀 Cosplay Explosion",
-  "🛍️ Mega Shopping Tipps",
-  "🌌 Sterne beobachten Vlog",
+  "🔥 Extreme Tanz-Challenge!",
+  "🎭 Verkleidung in 5 Sekunden!",
+  "💥 Glow-Up: schlimm ➔ schön!",
+  "🎮 Gaming Rage Clips!",
+  "🍔 FastFood Battle!",
+  "🎤 Verrückte Karaoke Session!",
+  "🐶 Tier-Reaction Video!",
+  "🎬 Film nachspielen!",
+  "🛍️ Einkauf Haul verrückt gemacht!",
+  "👑 Prinzessin für einen Tag",
+  "🎯 1 Tag alles blind machen!",
+  "🚀 Lifehack Mission Impossible",
+  "🌈 Outfit in 60 Sekunden wechseln!",
+  "😱 Pranks in der Öffentlichkeit!",
+  "💡 TikTok Hacks testen!",
+  "🔥 Sport-Move Nachstellen!",
+  "🎨 Graffiti Live malen!",
+  "🎤 Beatbox Battle starten!",
+  "🎯 Zielwerfen Challenge!",
+  "🧠 Schnellraten Quiz!"
 ];
 
 let currentIndex = 0;
@@ -33,26 +37,10 @@ function updateIdea() {
 
 setInterval(updateIdea, 5000);
 
-// Background Stars
-const starsCanvas = document.getElementById('stars');
-const starsCtx = starsCanvas.getContext('2d');
-starsCanvas.width = window.innerWidth;
-starsCanvas.height = window.innerHeight;
-
-function drawStars() {
-  starsCtx.fillStyle = '#000';
-  starsCtx.fillRect(0, 0, starsCanvas.width, starsCanvas.height);
-  for (let i = 0; i < 200; i++) {
-    const x = Math.random() * starsCanvas.width;
-    const y = Math.random() * starsCanvas.height;
-    const size = Math.random() * 2;
-    starsCtx.fillStyle = 'white';
-    starsCtx.beginPath();
-    starsCtx.arc(x, y, size, 0, Math.PI * 2);
-    starsCtx.fill();
-  }
-}
-setInterval(drawStars, 1000);
+// Button Click
+document.getElementById('generateButton').addEventListener('click', () => {
+  updateIdea();
+});
 
 // Meteor Shower
 const meteorsCanvas = document.getElementById('meteors');
@@ -71,32 +59,9 @@ function createMeteor() {
   meteorsCtx.lineTo(x - length, y + length);
   meteorsCtx.stroke();
 }
-setInterval(createMeteor, 300);
+setInterval(createMeteor, 500);
 
-// Laser Strikes
-const lasersCanvas = document.getElementById('lasers');
-const lasersCtx = lasersCanvas.getContext('2d');
-lasersCanvas.width = window.innerWidth;
-lasersCanvas.height = window.innerHeight;
-
-function shootLaser() {
-  const x = Math.random() * lasersCanvas.width;
-  const y = Math.random() * lasersCanvas.height;
-  lasersCtx.strokeStyle = 'hsl(' + Math.random() * 360 + ', 100%, 50%)';
-  lasersCtx.lineWidth = 3;
-  lasersCtx.beginPath();
-  lasersCtx.moveTo(x, y);
-  lasersCtx.lineTo(x + (Math.random() * 100 - 50), y - 300);
-  lasersCtx.stroke();
-}
-setInterval(shootLaser, 500);
-
-// Resize Canvases
 window.addEventListener('resize', () => {
-  starsCanvas.width = window.innerWidth;
-  starsCanvas.height = window.innerHeight;
   meteorsCanvas.width = window.innerWidth;
   meteorsCanvas.height = window.innerHeight;
-  lasersCanvas.width = window.innerWidth;
-  lasersCanvas.height = window.innerHeight;
 });
