@@ -1,43 +1,20 @@
 const ideas = [
   "🔥 Neue Tanz-Challenge starten",
-  "🎭 Lustige Mini-Sketche filmen",
-  "🎶 Lip-Sync Battle mit Freunden",
-  "📚 Storytime spannend erzählen",
-  "🌟 Glow-Up Transformation zeigen",
-  "🐶 Haustier-Challenges",
-  "🍔 Geiles Food-Review",
+  "🎭 Lustige Sketche filmen",
+  "💥 Glow-Up: vorher hässlich ➔ nachher hübsch",
+  "🎶 Lip-Sync Battle",
+  "🐶 Haustier-Tricks",
+  "🍔 Essens-Challenge",
   "🎮 Gaming Highlight Clips",
-  "🎤 Karaoke Performance",
-  "🏋️‍♂️ Fitness-Tutorial posten",
+  "🎤 Karaoke Show",
+  "📚 Storytime Drama",
+  "🏋️‍♂️ Fitness Transformation",
+  "💄 Makeover Blitz",
   "🧠 Lifehacks verraten",
-  "🎨 Schnelle Kunstwerke erstellen",
-  "🎬 Filmparodien drehen",
-  "😎 Streetstyle vorstellen",
-  "🚗 Auto-Innenraum zeigen",
-  "🍃 Naturaufnahmen bearbeiten",
-  "📈 Business-Hacks teilen",
-  "🛍️ Schnäppchen Tipps",
-  "🏝️ Urlaubsvibes verbreiten",
-  "🎲 Challenge-Wheel drehen",
-  "🕺 Eltern zum Tanzen bringen",
-  "🧩 DIY-Kunstwerke",
-  "🔮 Wahrsager-Video machen",
-  "🐣 Tierbabys filmen",
-  "🎁 Geschenkideen verraten",
-  "🎭 Cosplay präsentieren",
-  "🎯 Reaktions-Videos",
-  "🖌️ Speed Painting",
-  "📷 Instagram Reels Hacks",
-  "🎧 Sound-Experimente",
-  "🎸 Mini-Konzert",
-  "🏆 Sportliche Bestleistungen",
-  "🧘‍♂️ Yoga-Challenges",
-  "👗 Jahreszeiten-Outfits",
-  "🛠️ Gadget Lifehacks",
-  "🛏️ Produktive Morgenroutinen",
-  "💡 Mindset und Motivation",
-  "🧙‍♂️ Zaubertricks zeigen",
-  "🎂 Birthday-Pranks filmen",
+  "🎨 Kunst Speedrun",
+  "🚀 Cosplay Explosion",
+  "🛍️ Mega Shopping Tipps",
+  "🌌 Sterne beobachten Vlog",
 ];
 
 let currentIndex = 0;
@@ -45,9 +22,9 @@ let currentIndex = 0;
 function updateIdea() {
   currentIndex = (currentIndex + 1) % ideas.length;
   const ideaText = document.getElementById('ideaText');
-  
+
   ideaText.classList.add('fade');
-  
+
   setTimeout(() => {
     ideaText.innerText = ideas[currentIndex];
     ideaText.classList.remove('fade');
@@ -56,62 +33,70 @@ function updateIdea() {
 
 setInterval(updateIdea, 5000);
 
-// Hintergrund Partikel Effekt
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// Background Stars
+const starsCanvas = document.getElementById('stars');
+const starsCtx = starsCanvas.getContext('2d');
+starsCanvas.width = window.innerWidth;
+starsCanvas.height = window.innerHeight;
 
-let particlesArray = [];
-
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 2 + 1;
-    this.speedX = Math.random() * 1 - 0.5;
-    this.speedY = Math.random() * 1 - 0.5;
-    this.color = 'hsl(' + Math.random() * 360 + ', 100%, 50%)';
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if (this.size > 0.2) this.size -= 0.02;
-  }
-  draw() {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
-
-function init() {
-  particlesArray = [];
+function drawStars() {
+  starsCtx.fillStyle = '#000';
+  starsCtx.fillRect(0, 0, starsCanvas.width, starsCanvas.height);
   for (let i = 0; i < 200; i++) {
-    particlesArray.push(new Particle());
+    const x = Math.random() * starsCanvas.width;
+    const y = Math.random() * starsCanvas.height;
+    const size = Math.random() * 2;
+    starsCtx.fillStyle = 'white';
+    starsCtx.beginPath();
+    starsCtx.arc(x, y, size, 0, Math.PI * 2);
+    starsCtx.fill();
   }
 }
+setInterval(drawStars, 1000);
 
-function handleParticles() {
-  for (let i = 0; i < particlesArray.length; i++) {
-    particlesArray[i].update();
-    particlesArray[i].draw();
-  }
+// Meteor Shower
+const meteorsCanvas = document.getElementById('meteors');
+const meteorsCtx = meteorsCanvas.getContext('2d');
+meteorsCanvas.width = window.innerWidth;
+meteorsCanvas.height = window.innerHeight;
+
+function createMeteor() {
+  const x = Math.random() * meteorsCanvas.width;
+  const y = 0;
+  const length = Math.random() * 80 + 30;
+  meteorsCtx.strokeStyle = 'rgba(255,255,255,0.7)';
+  meteorsCtx.lineWidth = 2;
+  meteorsCtx.beginPath();
+  meteorsCtx.moveTo(x, y);
+  meteorsCtx.lineTo(x - length, y + length);
+  meteorsCtx.stroke();
 }
+setInterval(createMeteor, 300);
 
-function animate() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  handleParticles();
-  requestAnimationFrame(animate);
+// Laser Strikes
+const lasersCanvas = document.getElementById('lasers');
+const lasersCtx = lasersCanvas.getContext('2d');
+lasersCanvas.width = window.innerWidth;
+lasersCanvas.height = window.innerHeight;
+
+function shootLaser() {
+  const x = Math.random() * lasersCanvas.width;
+  const y = Math.random() * lasersCanvas.height;
+  lasersCtx.strokeStyle = 'hsl(' + Math.random() * 360 + ', 100%, 50%)';
+  lasersCtx.lineWidth = 3;
+  lasersCtx.beginPath();
+  lasersCtx.moveTo(x, y);
+  lasersCtx.lineTo(x + (Math.random() * 100 - 50), y - 300);
+  lasersCtx.stroke();
 }
+setInterval(shootLaser, 500);
 
-init();
-animate();
-
+// Resize Canvases
 window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
+  starsCanvas.width = window.innerWidth;
+  starsCanvas.height = window.innerHeight;
+  meteorsCanvas.width = window.innerWidth;
+  meteorsCanvas.height = window.innerHeight;
+  lasersCanvas.width = window.innerWidth;
+  lasersCanvas.height = window.innerHeight;
 });
