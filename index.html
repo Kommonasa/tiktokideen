@@ -3,26 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🔥 TikTok Ideen</title>
+  <title>🔥 TikTok Ideen Generator</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/scrollreveal"></script> 
 </head>
 <body>
   <div class="container">
-    <h1 class="title">🔥 Deine krassen TikTok Ideen 🔥</h1>
-    <p class="subtitle">Entdecke die besten Trends und starte durch!</p>
-    <div class="ideas">
-      <div class="idea">💃 Coole Tanz-Challenges</div>
-      <div class="idea">🎭 Lustige Sketche</div>
-      <div class="idea">🎤 Lip-Sync Meisterwerke</div>
-      <div class="idea">📸 Virale Trends entdecken</div>
-    </div>
+    <h1 class="title">🔥 Dein TikTok Ideen Generator 🔥</h1>
+    <p class="subtitle">Drück auf den Button und hol dir eine neue Idee!</p>
+    <button class="generate-button" onclick="generateIdea()">🚀 Neue Idee holen</button>
+    <div class="idea-box" id="ideaBox" onclick="ideaClicked()">Klick auf den Button, um eine Idee zu sehen!</div>
   </div>
 
   <script>
+    const ideas = [
+      "💃 Starte eine neue Tanz-Challenge!",
+      "🎭 Mach einen lustigen Sketch nach!",
+      "🎤 Zeig dein bestes Lip-Sync!",
+      "📸 Erstelle ein Mini-Vlog deines Tages!",
+      "😎 Reagiere auf virale TikToks!",
+      "👀 Teile geheime Lifehacks!",
+      "🛒 Teste TikTok Produkte!",
+      "🤔 Erzähle eine verrückte Storytime!",
+      "🐶 Mach ein Video mit deinem Haustier!",
+      "⚡ Zeige eine verrückte Transformation!"
+    ];
+
+    function generateIdea() {
+      const ideaBox = document.getElementById('ideaBox');
+      const randomIndex = Math.floor(Math.random() * ideas.length);
+      ideaBox.textContent = ideas[randomIndex];
+    }
+
+    function ideaClicked() {
+      const ideaBox = document.getElementById('ideaBox');
+      ideaBox.classList.add('clicked');
+      setTimeout(() => {
+        ideaBox.classList.remove('clicked');
+      }, 300);
+    }
+
     ScrollReveal().reveal('.title', { delay: 300, origin: 'top', distance: '50px' });
     ScrollReveal().reveal('.subtitle', { delay: 600, origin: 'bottom', distance: '50px' });
-    ScrollReveal().reveal('.idea', { interval: 200, origin: 'left', distance: '50px' });
+    ScrollReveal().reveal('.generate-button', { delay: 900, origin: 'bottom', distance: '50px' });
+    ScrollReveal().reveal('.idea-box', { delay: 1200, origin: 'bottom', distance: '50px' });
   </script>
 </body>
 </html>
