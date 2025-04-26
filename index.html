@@ -47,6 +47,42 @@
     ScrollReveal().reveal('.subtitle', { delay: 600, origin: 'bottom', distance: '50px' });
     ScrollReveal().reveal('.generate-button', { delay: 900, origin: 'bottom', distance: '50px' });
     ScrollReveal().reveal('.idea-box', { delay: 1200, origin: 'bottom', distance: '50px' });
-  </script>
-</body>
-</html>
+<script>
+    const ideas = [
+      "💃 Starte eine neue Tanz-Challenge!",
+      "🎭 Mach einen lustigen Sketch nach!",
+      "🎤 Zeig dein bestes Lip-Sync!",
+      "📸 Erstelle ein Mini-Vlog deines Tages!",
+      "😎 Reagiere auf virale TikToks!",
+      "👀 Teile geheime Lifehacks!",
+      "🛒 Teste TikTok Produkte!",
+      "🤔 Erzähle eine verrückte Storytime!",
+      "🐶 Mach ein Video mit deinem Haustier!",
+      "⚡ Zeige eine verrückte Transformation!"
+    ];
+
+    function generateIdea() {
+      const ideaBox = document.getElementById('ideaBox');
+      const randomIndex = Math.floor(Math.random() * ideas.length);
+      ideaBox.textContent = ideas[randomIndex];
+    }
+
+    function ideaClicked() {
+      const ideaBox = document.getElementById('ideaBox');
+      ideaBox.classList.add('clicked');
+      setTimeout(() => {
+        ideaBox.classList.remove('clicked');
+      }, 300);
+    }
+
+    // Scroll Animationen
+    ScrollReveal().reveal('.title', { delay: 300, origin: 'top', distance: '50px' });
+    ScrollReveal().reveal('.subtitle', { delay: 600, origin: 'bottom', distance: '50px' });
+    ScrollReveal().reveal('.generate-button', { delay: 900, origin: 'bottom', distance: '50px' });
+    ScrollReveal().reveal('.idea-box', { delay: 1200, origin: 'bottom', distance: '50px' });
+
+    // Automatisch alle 5 Sekunden neue Idee
+    setInterval(generateIdea, 5000);
+</script>
+
+
