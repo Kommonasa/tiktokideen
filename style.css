@@ -1,124 +1,91 @@
-/* Allgemeines Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #fff;
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    color: #ffffff;
     overflow-x: hidden;
 }
 
-/* Header */
-h1 {
+.container {
     text-align: center;
-    font-size: 3em;
-    margin-top: 50px;
-    color: #f1c40f;
-    text-shadow: 2px 2px 8px #000;
+    padding: 50px 20px;
 }
 
-p {
-    font-size: 1.2em;
-    text-align: center;
-    color: #ccc;
+h1.glow {
+    font-size: 3rem;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    margin-bottom: 30px;
+    animation: glowPulse 2s infinite alternate;
 }
 
-/* Produkt Sektion */
-section {
-    background-color: #222;
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+    100% {
+        text-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+    }
+}
+
+.idea-box {
+    background: #222;
     padding: 30px;
-    border-radius: 10px;
     margin: 20px auto;
-    width: 90%;
-    max-width: 1000px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    width: 80%;
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #0ff;
+    animation: fadeIn 3s infinite alternate;
 }
 
-section h2 {
-    text-align: center;
-    color: #f1c40f;
-    margin-bottom: 15px;
+.idea-box h2 {
+    font-size: 2rem;
+    margin: 0;
+    animation: textChange 5s infinite alternate;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+@keyframes textChange {
+    0% { opacity: 0.5; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1.1); }
 }
 
-img {
+.product {
+    margin-top: 50px;
+    background: #111;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #ff00ff;
+}
+
+.product img {
     width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 15px;
+    max-width: 400px;
+    border-radius: 15px;
+    margin: 20px 0;
+    transition: transform 0.5s;
+}
+
+.product img:hover {
+    transform: scale(1.05);
 }
 
 button {
-    display: block;
-    width: 100%;
-    background-color: #f1c40f;
-    color: #000;
-    font-size: 18px;
-    padding: 15px;
+    background: #ff00ff;
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
     cursor: pointer;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    margin-top: 20px;
-    transition: all 0.3s ease;
+    transition: background 0.5s;
 }
 
 button:hover {
-    background-color: #e67e22;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+    background: #ff69b4;
 }
 
-/* Effektbereich */
-.idea-container {
-    margin-top: 50px;
-    position: relative;
-    height: 400px;
-    width: 100%;
-    background-color: #333;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.idea-container h3 {
-    font-size: 2.5em;
-    color: #fff;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 5s infinite;
-    animation-delay: 1s;
-}
-
-/* Animations für Ideen */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    20% {
-        opacity: 1;
-    }
-    80% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-/* Musik-Player */
 audio {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    z-index: 100;
-    width: 200px;
-    background-color: transparent;
-    border: none;
+    display: none;
 }
